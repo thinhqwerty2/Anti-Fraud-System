@@ -46,6 +46,9 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.PUT, "/api/auth/access","/api/auth/role").hasRole("ADMINISTRATOR")
                 .mvcMatchers(HttpMethod.DELETE,"/api/auth/user/*").hasRole("ADMINISTRATOR")
                 .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole("ADMINISTRATOR","SUPPORT")
+                .mvcMatchers(HttpMethod.GET,"/api/antifraud/suspicious-ip","api/antifraud/stolencard").hasRole("SUPPORT")
+                .mvcMatchers(HttpMethod.POST,"/api/antifraud/suspicious-ip","api/antifraud/stolencard").hasRole("SUPPORT")
+                .mvcMatchers(HttpMethod.DELETE,"/api/antifraud/suspicious-ip/*","api/antifraud/stolencard/*").hasRole("SUPPORT")
                 .mvcMatchers(HttpMethod.POST,"/api/antifraud/transaction").hasRole("MERCHANT")
                 .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
                 .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
@@ -59,4 +62,5 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

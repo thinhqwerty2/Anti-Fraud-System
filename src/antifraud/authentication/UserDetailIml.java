@@ -42,10 +42,7 @@ public class UserDetailIml implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        if (active==true){
-            return true;
-        }
-        return false;
+        return active;
     }
 
     @Override

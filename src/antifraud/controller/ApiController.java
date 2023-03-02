@@ -1,13 +1,12 @@
 package antifraud.controller;
 
-import antifraud.entity.Transaction;
+import antifraud.entity.*;
+import antifraud.service.CardNumberService;
+import antifraud.service.IpService;
+import antifraud.service.TransactionService;
 import antifraud.service.UserDetailServiceIml;
-import antifraud.entity.UserDetails;
-import antifraud.entity.UserDetailsDTO;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,31 +18,52 @@ import java.util.Map;
 public class ApiController {
 
     private final UserDetailServiceIml userDetailServiceIml;
+    private final IpService ipService;
+    private final CardNumberService cardNumberService;
+    private final TransactionService transactionService;
 
-    private final PasswordEncoder encoder;
 
-    public ApiController(UserDetailServiceIml userDetailServiceIml, PasswordEncoder encoder) {
+    public ApiController(UserDetailServiceIml userDetailServiceIml, IpService ipService, CardNumberService cardNumberService, TransactionService transactionService) {
         this.userDetailServiceIml = userDetailServiceIml;
-        this.encoder = encoder;
+        this.ipService = ipService;
+        this.cardNumberService = cardNumberService;
+        this.transactionService = transactionService;
     }
 
     @PostMapping(value = "/antifraud/transaction", produces = "application/json")
-    public ResponseEntity<Map<String, String>> checkValidation(@RequestBody Transaction transaction) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Content-type", "application/json");
-        if (0 < transaction.getAmount() && transaction.getAmount() <= 200) {
-            return ResponseEntity.ok().headers(httpHeaders).body(Map.of("result", "ALLOWED"));
-        }
-        if (200 < transaction.getAmount() && transaction.getAmount() <= 1500) {
-            return ResponseEntity.ok().headers(httpHeaders).body(Map.of("result", "MANUAL_PROCESSING"));
-        }
-        if (transaction.getAmount() > 1500) {
-            return ResponseEntity.ok().headers(httpHeaders).body(Map.of("result", "PROHIBITED"));
+    public ResponseEntity<Map<String, String>> checkValidation(@Valid @RequestBody Transaction transaction) {
+        try {
+            if (transactionService.isBadRequest(transaction)) {
+                System.out.println("BadRequest");
+                return ResponseEntity.status(400).build();
+            }
+            if (transactionService.reasonReject(transaction).equals("")) {
+                if (0 < transaction.getAmount() && transaction.getAmount() <= 200) {
+                    return ResponseEntity.ok().body(Map.of("result", "ALLOWED", "info", "none"));
+                }
+                if (200 < transaction.getAmount() && transaction.getAmount() <= 1500) {
+                    return ResponseEntity.ok().body(Map.of("result", "MANUAL_PROCESSING", "info", "amount"));
+                }
+            } else {
+                return ResponseEntity.ok().body(Map.of("result", "PROHIBITED", "info", transactionService.reasonReject(transaction)));
+            }
+
+//            if (0 < transaction.getAmount() && transaction.getAmount() <= 200) {
+//                return ResponseEntity.ok().body(Map.of("result", "ALLOWED", "info", "none"));
+//            }
+//            if (200 < transaction.getAmount() && transaction.getAmount() <= 1500) {
+//                return ResponseEntity.ok().body(Map.of("result", "MANUAL_PROCESSING"));
+//            }
+//            if (transaction.getAmount() > 1500) {
+//                return ResponseEntity.ok().body(Map.of("result", "PROHIBITED"));
+//            }
+//            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            System.out.println("Đã bắt lỗi");
+            return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.badRequest().build();
-
-
+        return null;
     }
 
     @PostMapping(value = "/auth/user", produces = "application/json")
@@ -54,9 +74,7 @@ public class ApiController {
                 userDetails.setRole("ROLE_ADMINISTRATOR");
                 userDetails.setActive(true);
                 userDetailServiceIml.saveUser(userDetails);
-                return ResponseEntity
-                        .status(HttpStatus.CREATED)
-                        .body(new UserDetailsDTO(userDetails));
+                return ResponseEntity.status(HttpStatus.CREATED).body(new UserDetailsDTO(userDetails));
 
             } else {
 
@@ -65,9 +83,7 @@ public class ApiController {
                     userDetails.setRole("ROLE_MERCHANT");
                     userDetails.setActive(false);
                     userDetailServiceIml.saveUser(userDetails);
-                    return ResponseEntity
-                            .status(HttpStatus.CREATED)
-                            .body(new UserDetailsDTO(userDetails));
+                    return ResponseEntity.status(HttpStatus.CREATED).body(new UserDetailsDTO(userDetails));
                 } else return ResponseEntity.status(HttpStatus.CONFLICT).build();
             }
         } catch (Exception e) {
@@ -86,25 +102,23 @@ public class ApiController {
     public ResponseEntity<Map<String, String>> deleteUser(@PathVariable String username) {
         if (userDetailServiceIml.isExistedUserName(username)) {
             userDetailServiceIml.deleteUser(username);
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(Map.of("username", username, "status", "Deleted successfully!"));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("username", username, "status", "Deleted successfully!"));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 
-    @PutMapping(value = "auth/role", produces = "application/json",consumes = "application/json")
+    @PutMapping(value = "auth/role", produces = "application/json", consumes = "application/json")
     public ResponseEntity<UserDetailsDTO> updateRole(@RequestBody Map<String, String> userNameAndRole) {
         if (userNameAndRole.get("role").equals("SUPPORT") || userNameAndRole.get("role").equals("MERCHANT")) {
             UserDetails temp = userDetailServiceIml.findUserDetailsByUserName(userNameAndRole.get("username"));
             if (temp != null) {
                 if (!temp.getSimpleRole().equals(userNameAndRole.get("role"))) {
-                    temp.setRole("ROLE_"+userNameAndRole.get("role"));
+                    temp.setRole("ROLE_" + userNameAndRole.get("role"));
                     userDetailServiceIml.saveUser(temp);
                     return ResponseEntity.status(HttpStatus.OK).body(new UserDetailsDTO(temp));
                 } else return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            } else
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            } else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } else return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
@@ -122,13 +136,83 @@ public class ApiController {
                         break;
                 }
                 userDetailServiceIml.saveUser(temp);
-                return ResponseEntity
-                        .status(200)
-                        .body(Map.of("status", "User " + temp.getUsername() + (temp.isActive() ? " unlocked!" : " locked!")));
+                return ResponseEntity.status(200).body(Map.of("status", "User " + temp.getUsername() + (temp.isActive() ? " unlocked!" : " locked!")));
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    //////////////////////////////////////////////IpAndCardNumber///////////////////////////
+
+    /////////////////////////IP///////////////////////
+    @PostMapping(value = "/antifraud/suspicious-ip", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<IpSuspicious> saveSuspiciousIp(@Valid @RequestBody IpSuspicious ipSuspicious) {
+        try {
+
+            IpSuspicious ipTemp = ipService.findByIp(ipSuspicious.getIp());
+            if (ipTemp != null) {
+                ipService.saveIp(ipTemp);
+                return ResponseEntity.status(200).body(ipTemp);
+            }
+            return ResponseEntity.status(409).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(400).build();
+        }
+    }
+
+    @DeleteMapping(value = "/antifraud/suspicious-ip/{ip}", produces = "application/json")
+    public ResponseEntity<Map<String, String>> deleteSuspiciousIp(@PathVariable String ip) {
+        if (ipService.isCorrectFormat(ip)) {
+            IpSuspicious ipTemp = ipService.findByIp(ip);
+            if (ipTemp != null) {
+                ipService.deleteByIp(ip);
+                return ResponseEntity.status(200).body(Map.of("status", "IP " + ipTemp.getIp() + " successfully removed!"));
+            }
+            return ResponseEntity.status(404).build();
+        } else {
+            return ResponseEntity.status(400).build();
+        }
+    }
+
+    @GetMapping(value = "/antifraud/suspicious-ip", produces = "application/json")
+    public ResponseEntity<List<IpSuspicious>> getListIp() {
+        return ResponseEntity.status(200).body(ipService.findAll());
+    }
+
+    //////////////////////////////////////CardNumber/////////////////////
+    @PostMapping(value = "/antifraud/stolencard", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<StolenCard> saveStolenNumber(@Valid @RequestBody StolenCard stolenCard) {
+        try {
+
+            StolenCard numberTemp = cardNumberService.findByNumber(stolenCard.getNumber());
+            if (numberTemp != null) {
+                cardNumberService.save(numberTemp);
+                return ResponseEntity.status(200).body(numberTemp);
+            }
+            return ResponseEntity.status(409).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(400).build();
+        }
+    }
+
+    @DeleteMapping(value = "/antifraud/stolencard/{numbet}", produces = "application/json")
+    public ResponseEntity<Map<String, String>> deleteStolenNumber(@PathVariable String number) {
+        if (cardNumberService.isCorrectFormat(number)) {
+            StolenCard numberTemp = cardNumberService.findByNumber(number);
+            if (numberTemp != null) {
+                cardNumberService.deleteByNumber(number);
+                return ResponseEntity.status(200).body(Map.of("status", "Card " + numberTemp.getNumber() + " successfully removed!"));
+            }
+            return ResponseEntity.status(404).build();
+        } else {
+            return ResponseEntity.status(400).build();
+        }
+    }
+
+    @GetMapping(value = "/antifraud/stolencard", produces = "application/json")
+    public ResponseEntity<List<StolenCard>> getListStolenNumber() {
+        return ResponseEntity.status(200).body(cardNumberService.findAll());
     }
 
 }
