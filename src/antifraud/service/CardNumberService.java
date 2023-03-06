@@ -47,7 +47,7 @@ public class CardNumberService {
 
             int d = number.charAt(i) - '0';
 
-            if (isSecond == true)
+            if (isSecond)
                 d = d * 2;
 
             // We add two digits to handle

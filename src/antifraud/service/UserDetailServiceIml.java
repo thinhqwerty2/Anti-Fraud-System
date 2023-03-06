@@ -21,10 +21,6 @@ public class UserDetailServiceIml implements UserDetailsService {
 
     }
 
-    @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapper();
-    }
 
 
     public void saveUser(UserDetails userDetails) {

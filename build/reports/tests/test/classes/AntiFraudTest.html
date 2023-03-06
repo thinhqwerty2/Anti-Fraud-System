@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">29.209s</div>
+<div class="counter">32.039s</div>
 <p>duration</p>
 </div>
 </td>
@@ -76,11 +76,15 @@
 <a name="start"></a>
 <h3 class="failures">start</h3>
 <span class="code">
-<pre>java.lang.AssertionError: Wrong answer in test #63
+<pre>java.lang.AssertionError: Wrong answer in test #99
 
-GET /api/antifraud/stolencard should respond with status code 403, responded: 200
-Response body:
-[]
+The JSON object at key result should equal to &quot;PROHIBITED&quot;, found &quot;ALLOWED&quot;
+
+Full JSON:
+{
+  &quot;info&quot;: &quot;ip-correlation&quot;,
+  &quot;result&quot;: &quot;ALLOWED&quot;
+}
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -143,7 +147,7 @@ Response body:
 </thead>
 <tr>
 <td class="failures">start</td>
-<td class="failures">29.209s</td>
+<td class="failures">32.039s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -162,34 +166,35 @@ Start test 1?[0m
 ?[0m?[0;34m =========|_|==============|___/=/_/_/_/
 ?[0m?[0;34m :: Spring Boot ::                (v2.7.3)
 ?[0m?[0;34m
-?[0m?[0;34m2023-03-02 17:52:07.754  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication using Java 17.0.6 on Wuyern with PID 7076 (started by thinh in D:\Internship\Anti-Fraud System\Anti-Fraud System\task)
-?[0m?[0;34m2023-03-02 17:52:07.762  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to 1 default profile: &quot;default&quot;
-?[0m?[0;34m2023-03-02 17:52:10.572  INFO 7076 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-?[0m?[0;34m2023-03-02 17:52:10.690  INFO 7076 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 3 JPA repository interfaces.
-?[0m?[0;34m2023-03-02 17:52:12.021  INFO 7076 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-?[0m?[0;34m2023-03-02 17:52:12.043  INFO 7076 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-?[0m?[0;34m2023-03-02 17:52:12.045  INFO 7076 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-?[0m?[0;34m2023-03-02 17:52:12.274  INFO 7076 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-?[0m?[0;34m2023-03-02 17:52:12.275  INFO 7076 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4419 ms
-?[0m?[0;34m2023-03-02 17:52:12.639  INFO 7076 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-?[0m?[0;34m2023-03-02 17:52:13.154  INFO 7076 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-?[0m?[0;34m2023-03-02 17:52:13.182  INFO 7076 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-?[0m?[0;34m2023-03-02 17:52:13.548  INFO 7076 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-?[0m?[0;34m2023-03-02 17:52:13.668  INFO 7076 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
-?[0m?[0;34m2023-03-02 17:52:14.155  INFO 7076 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-?[0m?[0;34m2023-03-02 17:52:14.417  INFO 7076 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+?[0m?[0;34m2023-03-06 17:49:04.904  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication using Java 17.0.6 on Wuyern with PID 1964 (started by thinh in D:\Internship\Anti-Fraud System\Anti-Fraud System\task)
+?[0m?[0;34m2023-03-06 17:49:04.915  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to 1 default profile: &quot;default&quot;
+?[0m?[0;34m2023-03-06 17:49:07.411  INFO 1964 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+?[0m?[0;34m2023-03-06 17:49:07.542  INFO 1964 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+?[0m?[0;34m2023-03-06 17:49:08.906  INFO 1964 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+?[0m?[0;34m2023-03-06 17:49:08.927  INFO 1964 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+?[0m?[0;34m2023-03-06 17:49:08.928  INFO 1964 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+?[0m?[0;34m2023-03-06 17:49:09.167  INFO 1964 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+?[0m?[0;34m2023-03-06 17:49:09.168  INFO 1964 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4166 ms
+?[0m?[0;34m2023-03-06 17:49:09.492  INFO 1964 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+?[0m?[0;34m2023-03-06 17:49:10.019  INFO 1964 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+?[0m?[0;34m2023-03-06 17:49:10.043  INFO 1964 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+?[0m?[0;34m2023-03-06 17:49:10.403  INFO 1964 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+?[0m?[0;34m2023-03-06 17:49:10.533  INFO 1964 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+?[0m?[0;34m2023-03-06 17:49:10.935  INFO 1964 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+?[0m?[0;34m2023-03-06 17:49:11.222  INFO 1964 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 ?[0m?[0;34mHibernate: create table ip_suspicious (id bigint not null, ip varchar(255) not null, primary key (id))
 ?[0m?[0;34mHibernate: create table stolen_card (id bigint not null, number varchar(255) not null, primary key (id))
+?[0m?[0;34mHibernate: create table transaction (id bigint not null, amount bigint not null, date timestamp not null, ip varchar(255) not null, number varchar(255) not null, region integer not null, result varchar(255), primary key (id))
 ?[0m?[0;34mHibernate: create table user_details (id bigint generated by default as identity, active boolean, name varchar(255) not null, password varchar(255) not null, role varchar(255), username varchar(255) not null, primary key (id))
 ?[0m?[0;34mHibernate: create sequence hibernate_sequence start with 1 increment by 1
-?[0m?[0;34m2023-03-02 17:52:16.022  INFO 7076 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-?[0m?[0;34m2023-03-02 17:52:16.035  INFO 7076 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-?[0m?[0;34m2023-03-02 17:52:17.160  WARN 7076 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-?[0m?[0;34m2023-03-02 17:52:17.577  INFO 7076 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-?[0m?[0;34m2023-03-02 17:52:18.179  INFO 7076 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-?[0m?[0;34m2023-03-02 17:52:18.339  INFO 7076 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e0602ff, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a865ebf, org.springframework.security.web.context.SecurityContextPersistenceFilter@1390a43a, org.springframework.security.web.header.HeaderWriterFilter@648f48d3, org.springframework.security.web.authentication.logout.LogoutFilter@23307c6c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@20dc763b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e75bae7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@53202b06, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b3d3e57, org.springframework.security.web.session.SessionManagementFilter@2709e075, org.springframework.security.web.access.ExceptionTranslationFilter@6bf34912, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@40e7aea9]
-?[0m?[0;34m2023-03-02 17:52:19.008  INFO 7076 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-?[0m?[0;34m2023-03-02 17:52:19.056  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 12.209 seconds (JVM running for 13.896)
+?[0m?[0;34m2023-03-06 17:49:13.057  INFO 1964 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+?[0m?[0;34m2023-03-06 17:49:13.079  INFO 1964 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+?[0m?[0;34m2023-03-06 17:49:14.908  WARN 1964 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+?[0m?[0;34m2023-03-06 17:49:15.465  INFO 1964 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+?[0m?[0;34m2023-03-06 17:49:16.247  INFO 1964 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+?[0m?[0;34m2023-03-06 17:49:16.418  INFO 1964 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@31dbca5d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40c92dfa, org.springframework.security.web.context.SecurityContextPersistenceFilter@7164e54, org.springframework.security.web.header.HeaderWriterFilter@7a41f4a7, org.springframework.security.web.authentication.logout.LogoutFilter@38d9c9c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1de6689c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20040c6e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9da386c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16b713dd, org.springframework.security.web.session.SessionManagementFilter@4607cbe2, org.springframework.security.web.access.ExceptionTranslationFilter@135f160e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16160a37]
+?[0m?[0;34m2023-03-06 17:49:17.415  INFO 1964 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+?[0m?[0;34m2023-03-06 17:49:17.451  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 13.369 seconds (JVM running for 15.084)
 ?[0m?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/user'
 ?[0m?[0;34mrequest: '{
@@ -198,10 +203,10 @@ Start test 1?[0m
 ?[0m?[0;34m}'
 ?[0m?[0;34mExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 ?[0m?[0;34m-----
-?[0;34m2023-03-02 17:52:19.722  INFO 7076 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-02 17:52:19.722  INFO 7076 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-02 17:52:19.725  INFO 7076 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-?[0m?[0;34m2023-03-02 17:52:20.068  WARN 7076 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.UserDetailsDTO&gt; antifraud.controller.ApiController.createUser(antifraud.entity.UserDetails): [Field error in object 'userDetails' on field 'username': rejected value [null]; codes [NotNull.userDetails.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDetails.username,username]; arguments []; default message [username]]; default message [must not be null]] ]
+?[0;34m2023-03-06 17:49:18.387  INFO 1964 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-06 17:49:18.388  INFO 1964 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-06 17:49:18.393  INFO 1964 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+?[0m?[0;34m2023-03-06 17:49:18.832  WARN 1964 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.UserDetailsDTO&gt; antifraud.controller.ApiController.createUser(antifraud.entity.UserDetails): [Field error in object 'userDetails' on field 'username': rejected value [null]; codes [NotNull.userDetails.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDetails.username,username]; arguments []; default message [username]]; default message [must not be null]] ]
 ?[0m?[1;31m
 Start test 2?[0m
 ?[0;34mTest case
@@ -212,7 +217,7 @@ Start test 2?[0m
 ?[0m?[0;34m}'
 ?[0m?[0;34mExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 ?[0m?[0;34m-----
-?[0;34m2023-03-02 17:52:20.210  WARN 7076 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.UserDetailsDTO&gt; antifraud.controller.ApiController.createUser(antifraud.entity.UserDetails): [Field error in object 'userDetails' on field 'password': rejected value [null]; codes [NotNull.userDetails.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDetails.password,password]; arguments []; default message [password]]; default message [must not be null]] ]
+?[0;34m2023-03-06 17:49:18.951  WARN 1964 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.UserDetailsDTO&gt; antifraud.controller.ApiController.createUser(antifraud.entity.UserDetails): [Field error in object 'userDetails' on field 'password': rejected value [null]; codes [NotNull.userDetails.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDetails.password,password]; arguments []; default message [password]]; default message [must not be null]] ]
 ?[0m?[1;31m
 Start test 3?[0m
 ?[0;34mTest case
@@ -232,7 +237,7 @@ Start test 4?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 5?[0m
@@ -246,7 +251,7 @@ Start test 5?[0m
 ?[0m?[0;34mExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
 ?[0m?[0;34m-----
 ?[0;34mHibernate: select count(*) as col_0_0_ from user_details userdetail0_
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: insert into user_details (id, active, name, password, role, username) values (default, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 6?[0m
@@ -254,7 +259,7 @@ Start test 6?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 7?[0m
@@ -262,29 +267,29 @@ Start test 7?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'A user with incorrect credentials is not allowed'
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 8?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'A user with incorrect credentials is not allowed'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 9?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'Merchant after registration must be LOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 10?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/access'
 ?[0m?[0;34mExpectations: 'A user johndoe1 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 11?[0m
@@ -292,13 +297,13 @@ Start test 11?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'A user johndoe1 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 12?[0m
 ?[0;34mTest case
@@ -306,21 +311,23 @@ Start test 12?[0m
 ?[0m?[0;34mrequest: 'amount = 1'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'ALLOWED''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 13?[0m
-?[0;34m2023-03-02 17:52:21.476  INFO 7076 --- [       Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-?[0m?[0;34m2023-03-02 17:52:21.479  INFO 7076 --- [       Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-02 17:52:21.482  WARN 7076 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [MVStore background writer D:/Internship/Anti-Fraud System/Anti-Fraud System/service_db.mv.db] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+?[0;34m2023-03-06 17:49:20.299  INFO 1964 --- [       Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+?[0m?[0;34m2023-03-06 17:49:20.302  INFO 1964 --- [       Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-06 17:49:20.306  WARN 1964 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [MVStore background writer D:/Internship/Anti-Fraud System/Anti-Fraud System/service_db.mv.db] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 ?[0m?[0;34m java.base@17.0.6/java.lang.Object.wait(Native Method)
 ?[0m?[0;34m app//org.h2.mvstore.MVStore$BackgroundWriterThread.run(MVStore.java:3768)
-?[0m?[0;34m2023-03-02 17:52:21.483  WARN 7076 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+?[0m?[0;34m2023-03-06 17:49:20.307  WARN 1964 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 ?[0m?[0;34m java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -330,7 +337,7 @@ Start test 13?[0m
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 ?[0m?[0;34m java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
-?[0m?[0;34m2023-03-02 17:52:21.486  WARN 7076 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [H2-serialization] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+?[0m?[0;34m2023-03-06 17:49:20.309  WARN 1964 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [H2-serialization] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 ?[0m?[0;34m java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
@@ -342,7 +349,7 @@ Start test 13?[0m
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 ?[0m?[0;34m java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
-?[0m?[0;34m2023-03-02 17:52:21.490  WARN 7076 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [H2-save] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+?[0m?[0;34m2023-03-06 17:49:20.311  WARN 1964 --- [       Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [H2-save] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 ?[0m?[0;34m java.base@17.0.6/jdk.internal.misc.Unsafe.park(Native Method)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
@@ -354,9 +361,9 @@ Start test 13?[0m
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
 ?[0m?[0;34m java.base@17.0.6/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 ?[0m?[0;34m java.base@17.0.6/java.lang.Thread.run(Thread.java:833)
-?[0m?[0;34m2023-03-02 17:52:21.509  INFO 7076 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-?[0m?[0;34m2023-03-02 17:52:21.513  INFO 7076 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-?[0m?[0;34m2023-03-02 17:52:21.608  INFO 7076 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+?[0m?[0;34m2023-03-06 17:49:20.325  INFO 1964 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+?[0m?[0;34m2023-03-06 17:49:20.332  INFO 1964 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+?[0m?[0;34m2023-03-06 17:49:20.428  INFO 1964 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 ?[0;34m
 ?[0m?[0;34m  .   ____          _            __ _ _
 ?[0m?[0;34m /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -366,38 +373,38 @@ Start test 13?[0m
 ?[0m?[0;34m =========|_|==============|___/=/_/_/_/
 ?[0m?[0;34m :: Spring Boot ::                (v2.7.3)
 ?[0m?[0;34m
-?[0m?[0;34m2023-03-02 17:52:31.887  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication using Java 17.0.6 on Wuyern with PID 7076 (started by thinh in D:\Internship\Anti-Fraud System\Anti-Fraud System\task)
-?[0m?[0;34m2023-03-02 17:52:31.888  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to 1 default profile: &quot;default&quot;
-?[0m?[0;34m2023-03-02 17:52:32.632  INFO 7076 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-?[0m?[0;34m2023-03-02 17:52:32.657  INFO 7076 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
-?[0m?[0;34m2023-03-02 17:52:32.874  INFO 7076 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-?[0m?[0;34m2023-03-02 17:52:32.876  INFO 7076 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-?[0m?[0;34m2023-03-02 17:52:32.876  INFO 7076 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-?[0m?[0;34m2023-03-02 17:52:32.959  INFO 7076 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-?[0m?[0;34m2023-03-02 17:52:32.960  INFO 7076 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1067 ms
-?[0m?[0;34m2023-03-02 17:52:33.035  INFO 7076 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-?[0m?[0;34m2023-03-02 17:52:33.080  INFO 7076 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-?[0m?[0;34m2023-03-02 17:52:33.081  INFO 7076 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-?[0m?[0;34m2023-03-02 17:52:33.256  INFO 7076 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-?[0m?[0;34m2023-03-02 17:52:33.276  INFO 7076 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-?[0m?[0;34m2023-03-02 17:52:33.441  INFO 7076 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-?[0m?[0;34m2023-03-02 17:52:33.441  INFO 7076 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-?[0m?[0;34m2023-03-02 17:52:33.567  WARN 7076 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-?[0m?[0;34m2023-03-02 17:52:33.702  INFO 7076 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-?[0m?[0;34m2023-03-02 17:52:33.892  INFO 7076 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-?[0m?[0;34m2023-03-02 17:52:33.919  INFO 7076 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@44992466, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55bf08a5, org.springframework.security.web.context.SecurityContextPersistenceFilter@498102a4, org.springframework.security.web.header.HeaderWriterFilter@75dc995f, org.springframework.security.web.authentication.logout.LogoutFilter@3a72b2c9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@269a37bc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8829ecd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1985f8e3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@623cd12e, org.springframework.security.web.session.SessionManagementFilter@51c660c8, org.springframework.security.web.access.ExceptionTranslationFilter@10fa270e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@42cef0af]
-?[0m?[0;34m2023-03-02 17:52:34.094  INFO 7076 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-?[0m?[0;34m2023-03-02 17:52:34.104  INFO 7076 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 2.268 seconds (JVM running for 28.944)
+?[0m?[0;34m2023-03-06 17:49:30.770  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication using Java 17.0.6 on Wuyern with PID 1964 (started by thinh in D:\Internship\Anti-Fraud System\Anti-Fraud System\task)
+?[0m?[0;34m2023-03-06 17:49:30.771  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to 1 default profile: &quot;default&quot;
+?[0m?[0;34m2023-03-06 17:49:31.498  INFO 1964 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+?[0m?[0;34m2023-03-06 17:49:31.525  INFO 1964 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 4 JPA repository interfaces.
+?[0m?[0;34m2023-03-06 17:49:31.771  INFO 1964 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+?[0m?[0;34m2023-03-06 17:49:31.773  INFO 1964 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+?[0m?[0;34m2023-03-06 17:49:31.773  INFO 1964 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+?[0m?[0;34m2023-03-06 17:49:31.847  INFO 1964 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+?[0m?[0;34m2023-03-06 17:49:31.848  INFO 1964 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1072 ms
+?[0m?[0;34m2023-03-06 17:49:31.929  INFO 1964 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+?[0m?[0;34m2023-03-06 17:49:31.970  INFO 1964 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+?[0m?[0;34m2023-03-06 17:49:31.971  INFO 1964 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+?[0m?[0;34m2023-03-06 17:49:32.062  INFO 1964 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+?[0m?[0;34m2023-03-06 17:49:32.088  INFO 1964 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+?[0m?[0;34m2023-03-06 17:49:32.266  INFO 1964 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+?[0m?[0;34m2023-03-06 17:49:32.267  INFO 1964 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+?[0m?[0;34m2023-03-06 17:49:32.413  WARN 1964 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+?[0m?[0;34m2023-03-06 17:49:32.567  INFO 1964 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+?[0m?[0;34m2023-03-06 17:49:32.798  INFO 1964 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+?[0m?[0;34m2023-03-06 17:49:32.825  INFO 1964 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3bd552f7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ba4c99c, org.springframework.security.web.context.SecurityContextPersistenceFilter@30407f28, org.springframework.security.web.header.HeaderWriterFilter@21c7415e, org.springframework.security.web.authentication.logout.LogoutFilter@563bf9d2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@19305a7c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dac4d04, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@367a245e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4158b72f, org.springframework.security.web.session.SessionManagementFilter@7f1581bb, org.springframework.security.web.access.ExceptionTranslationFilter@4f1a4d61, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1203c259]
+?[0m?[0;34m2023-03-06 17:49:33.022  INFO 1964 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+?[0m?[0;34m2023-03-06 17:49:33.032  INFO 1964 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 2.316 seconds (JVM running for 30.666)
 ?[0m?[1;31m
 Start test 14?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'After restart user must exist'
 ?[0m?[0;34m-----
-?[0;34m2023-03-02 17:52:34.120  INFO 7076 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-02 17:52:34.120  INFO 7076 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-02 17:52:34.123  INFO 7076 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34m2023-03-06 17:49:33.042  INFO 1964 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-06 17:49:33.044  INFO 1964 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-06 17:49:33.048  INFO 1964 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 15?[0m
@@ -411,7 +418,7 @@ Start test 15?[0m
 ?[0m?[0;34mExpectations: 'In case of an attempt to register an existing user, endpoint must respond with HTTP CONFLICT status (409).'
 ?[0m?[0;34m-----
 ?[0;34mHibernate: select count(*) as col_0_0_ from user_details userdetail0_
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 16?[0m
 ?[0;34mTest case
@@ -424,7 +431,7 @@ Start test 16?[0m
 ?[0m?[0;34mExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
 ?[0m?[0;34m-----
 ?[0;34mHibernate: select count(*) as col_0_0_ from user_details userdetail0_
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: insert into user_details (id, active, name, password, role, username) values (default, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 17?[0m
@@ -432,7 +439,7 @@ Start test 17?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 18?[0m
@@ -441,13 +448,17 @@ Start test 18?[0m
 ?[0m?[0;34mrequest: 'amount = 199'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'ALLOWED''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=199, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-60
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 19?[0m
 ?[0;34mTest case
@@ -455,13 +466,19 @@ Start test 19?[0m
 ?[0m?[0;34mrequest: 'amount = 200'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'ALLOWED''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=200, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-120
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 20?[0m
 ?[0;34mTest case
@@ -469,13 +486,21 @@ Start test 20?[0m
 ?[0m?[0;34mrequest: 'amount = 201'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=201, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-180
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 21?[0m
 ?[0;34mTest case
@@ -483,13 +508,23 @@ Start test 21?[0m
 ?[0m?[0;34mrequest: 'amount = 1499'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1499, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-240
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-240
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 22?[0m
 ?[0;34mTest case
@@ -497,13 +532,25 @@ Start test 22?[0m
 ?[0m?[0;34mrequest: 'amount = 1500'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1500, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:05}
+?[0m?[0;34mTransaction{id=6, amount=1499, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-240
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-300
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-300
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 23?[0m
 ?[0;34mTest case
@@ -511,15 +558,27 @@ Start test 23?[0m
 ?[0m?[0;34mrequest: 'amount = 1501'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'PROHIBITED''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
-?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
-?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1501, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:06}
+?[0m?[0;34mTransaction{id=7, amount=1500, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:05}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=6, amount=1499, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m-240
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-300
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-360
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-360
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 24?[0m
 ?[0;34mTest case
@@ -527,15 +586,29 @@ Start test 24?[0m
 ?[0m?[0;34mrequest: 'amount = 2000'
 ?[0m?[0;34mExpectations: 'Result validating of Transaction must be 'PROHIBITED''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
-?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
-?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=2000, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34mTransaction{id=8, amount=1501, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:06}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=7, amount=1500, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:05}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=6, amount=1499, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m-240
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m-300
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m-360
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-420
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m-420
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 25?[0m
 ?[0;34mTest case
@@ -543,7 +616,7 @@ Start test 25?[0m
 ?[0m?[0;34mrequest: 'amount = -1'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mAmount
 ?[0m?[0;34mBadRequest
 ?[0m?[1;31m
@@ -553,7 +626,7 @@ Start test 26?[0m
 ?[0m?[0;34mrequest: 'amount = 0'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mAmount
 ?[0m?[0;34mBadRequest
 ?[0m?[1;31m
@@ -563,7 +636,7 @@ Start test 27?[0m
 ?[0m?[0;34mrequest: 'amount = null'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mAmount
 ?[0m?[0;34mBadRequest
 ?[0m?[1;31m
@@ -573,7 +646,7 @@ Start test 28?[0m
 ?[0m?[0;34mrequest: 'amount = &quot;&quot;'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mAmount
 ?[0m?[0;34mBadRequest
 ?[0m?[1;31m
@@ -583,7 +656,7 @@ Start test 29?[0m
 ?[0m?[0;34mrequest: 'amount = &quot; &quot;'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mAmount
 ?[0m?[0;34mBadRequest
 ?[0m?[1;31m
@@ -593,8 +666,8 @@ Start test 30?[0m
 ?[0m?[0;34mrequest: 'empty body'
 ?[0m?[0;34mExpectations: 'Response status must be 'Bad request''
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m2023-03-02 17:52:34.702  WARN 7076 --- [io-28852-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.String&gt;&gt; antifraud.controller.ApiController.checkValidation(antifraud.entity.Transaction) with 2 errors: [Field error in object 'transaction' on field 'ip': rejected value [null]; codes [NotNull.transaction.ip,NotNull.ip,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.ip,ip]; arguments []; default message [ip]]; default message [must not be null]] [Field error in object 'transaction' on field 'number': rejected value [null]; codes [NotNull.transaction.number,NotNull.number,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.number,number]; arguments []; default message [number]]; default message [must not be null]] ]
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34m2023-03-06 17:49:33.696  WARN 1964 --- [io-28852-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.String&gt;&gt; antifraud.controller.ApiController.checkValidation(antifraud.entity.Transaction) with 4 errors: [Field error in object 'transaction' on field 'date': rejected value [null]; codes [NotNull.transaction.date,NotNull.date,NotNull.java.time.LocalDateTime,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.date,date]; arguments []; default message [date]]; default message [must not be null]] [Field error in object 'transaction' on field 'ip': rejected value [null]; codes [NotNull.transaction.ip,NotNull.ip,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.ip,ip]; arguments []; default message [ip]]; default message [must not be null]] [Field error in object 'transaction' on field 'number': rejected value [null]; codes [NotNull.transaction.number,NotNull.number,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.number,number]; arguments []; default message [number]]; default message [must not be null]] [Field error in object 'transaction' on field 'region': rejected value [null]; codes [NotNull.transaction.region,NotNull.region,NotNull.antifraud.entity.Region,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transaction.region,region]; arguments []; default message [region]]; default message [must not be null]] ]
 ?[0m?[1;31m
 Start test 31?[0m
 ?[0;34mTest case
@@ -602,8 +675,8 @@ Start test 31?[0m
 ?[0m?[0;34mrequest: '/api/auth/user/somebody'
 ?[0m?[0;34mExpectations: 'If a user is not found, respond with HTTP Not Found status (404).'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 32?[0m
 ?[0;34mTest case
@@ -611,8 +684,8 @@ Start test 32?[0m
 ?[0m?[0;34mrequest: '/api/auth/user/johndoe1'
 ?[0m?[0;34mExpectations: 'The endpoint must delete the user and respond with HTTP OK status (200)'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: delete from user_details where upper(username)=upper(?)
 ?[0m?[1;31m
 Start test 33?[0m
@@ -620,7 +693,7 @@ Start test 33?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'User 'johndoe1' must be delete'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 34?[0m
@@ -628,30 +701,30 @@ Start test 34?[0m
 ?[0m?[0;34mTesting api: '/api/auth/role'
 ?[0m?[0;34mExpectations: 'If a user is not found, endpoint must respond with the HTTP Not Found status (404).'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 35?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/role'
 ?[0m?[0;34mExpectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 36?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/role'
 ?[0m?[0;34mExpectations: 'If a role is ADMINISTRATOR, endpoint must respond with the HTTP Bad Request status (400).'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 37?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/role'
 ?[0m?[0;34mExpectations: 'If a role successfully changed, respond with the HTTP OK status (200)'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 38?[0m
@@ -659,16 +732,16 @@ Start test 38?[0m
 ?[0m?[0;34mTesting api: '/api/auth/role'
 ?[0m?[0;34mExpectations: 'If a role already assigned to a user, endpoint must respond with the HTTP Conflict status (409).'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 39?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/access'
 ?[0m?[0;34mExpectations: 'A user johndoe2 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 40?[0m
@@ -676,7 +749,7 @@ Start test 40?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'Role for user 'johndoe2' must be changed to SUPPORT'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: SELECT * FROM User_Details ORDER BY id ASC 
 ?[0m?[1;31m
 Start test 41?[0m
@@ -684,7 +757,7 @@ Start test 41?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'Role MERCHANT must be removed from user johndoe2!'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 42?[0m
 ?[0;34mTest case
@@ -697,7 +770,7 @@ Start test 42?[0m
 ?[0m?[0;34mExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
 ?[0m?[0;34m-----
 ?[0m?[0;34mHibernate: select count(*) as col_0_0_ from user_details userdetail0_
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: insert into user_details (id, active, name, password, role, username) values (default, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 43?[0m
@@ -705,15 +778,15 @@ Start test 43?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'MERCHANT user after registration must be LOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 44?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/access'
 ?[0m?[0;34mExpectations: 'A user johndoe3 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 45?[0m
@@ -721,21 +794,39 @@ Start test 45?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'A user johndoe3 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34m192
-?[0m?[0;34m168
-?[0m?[0;34m1
-?[0m?[0;34m1
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
 ?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.1', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m420
+?[0m?[0;34mTransaction{id=8, amount=1501, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:06}
+?[0m?[0;34m360
+?[0m?[0;34mTransaction{id=7, amount=1500, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:05}
+?[0m?[0;34m300
+?[0m?[0;34mTransaction{id=6, amount=1499, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34m240
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m180
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m120
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m60
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m?[1;31m
 Start test 46?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/access'
 ?[0m?[0;34mExpectations: 'A user johndoe3 must be LOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 47?[0m
@@ -743,15 +834,15 @@ Start test 47?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'A user johndoe3 must be LOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 48?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/access'
 ?[0m?[0;34mExpectations: 'A user johndoe3 must be UNLOCKED'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: update user_details set active=?, name=?, password=?, role=?, username=? where id=?
 ?[0m?[1;31m
 Start test 49?[0m
@@ -759,14 +850,14 @@ Start test 49?[0m
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 50?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/transaction'
 ?[0m?[0;34mExpectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 51?[0m
 ?[0;34mTest case
@@ -785,14 +876,14 @@ Start test 53?[0m
 ?[0m?[0;34mTesting api: '/api/auth/user'
 ?[0m?[0;34mExpectations: 'A user with role SUPPORT must not have access to DELETE /api/auth/user'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 54?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/auth/user'
 ?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to DELETE /api/auth/user'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 55?[0m
 ?[0;34mTest case
@@ -805,57 +896,445 @@ Start test 56?[0m
 ?[0m?[0;34mTesting api: '/api/auth/list'
 ?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to /api/auth/list'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 57?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to GET /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 58?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to GET /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 59?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to POST /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 60?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to POST /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 61?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to DELETE /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 62?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
 ?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to DELETE /api/antifraud/suspicious-ip'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[1;31m
 Start test 63?[0m
 ?[0;34mTest case
 ?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
 ?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to GET /api/antifraud/stolencard'
 ?[0m?[0;34m-----
-?[0m?[0;34mHibernate: select userdetail0_.id as id1_2_, userdetail0_.active as active2_2_, userdetail0_.name as name3_2_, userdetail0_.password as password4_2_, userdetail0_.role as role5_2_, userdetail0_.username as username6_2_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 64?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to GET /api/antifraud/stolencard'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 65?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to POST /api/antifraud/stolencard'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 66?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to POST /api/antifraud/stolencard'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 67?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A user with role ADMINISTRATOR must not have access to DELETE /api/antifraud/stolencard'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 68?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A user with role MERCHANT must not have access to DELETE /api/antifraud/stolencard'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 69?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'Endpoint must respond with empty array'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ order by ipsuspicio0_.id asc
+?[0m?[1;31m
+Start test 70?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'IP must be added to Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into ip_suspicious (ip, id) values (?, ?)
+?[0m?[1;31m
+Start test 71?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'If IP already in database,  endpoint must respond with the HTTP Conflict status (409).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[1;31m
+Start test 72?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'If IP doesn't have right format, respond with HTTP Bad Request status (400)'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 73?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'If IP doesn't have right format, respond with HTTP Bad Request status (400)'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 74?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'IP must be added to Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into ip_suspicious (ip, id) values (?, ?)
+?[0m?[1;31m
+Start test 75?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'Endpoint must responds with Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ order by ipsuspicio0_.id asc
+?[0m?[1;31m
+Start test 76?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'IP must be removed from Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mHibernate: delete from ip_suspicious where ip=?
+?[0m?[1;31m
+Start test 77?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'If IP not found in database, respond with the HTTP Not Found status (404).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[1;31m
+Start test 78?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'If IP doesn't have right format, respond with HTTP Bad Request status (400)'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 79?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/suspicious-ip'
+?[0m?[0;34mExpectations: 'IP must be removed from Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ order by ipsuspicio0_.id asc
+?[0m?[1;31m
+Start test 80?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'Endpoint must respond with empty array'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
 ?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ order by stolencard0_.id asc
+?[0m?[1;31m
+Start test 81?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A card must be added to Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into stolen_card (number, id) values (?, ?)
+?[0m?[1;31m
+Start test 82?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'If card-number already in database, endpoint must respond with the HTTP Conflict status (409).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[1;31m
+Start test 83?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'If card-number doesn't have right format, endpoint must respond with HTTP Bad Request status (400).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 84?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'If checksum of card-number is wrong, endpoint must respond with HTTP Bad Request status (400).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 85?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'A card must be added to Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into stolen_card (number, id) values (?, ?)
+?[0m?[1;31m
+Start test 86?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'Endpoint must responds with Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ order by stolencard0_.id asc
+?[0m?[1;31m
+Start test 87?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'Card must be removed from Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: delete from stolen_card where number=?
+?[0m?[1;31m
+Start test 88?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'If card-number not found in database, respond with the HTTP Not Found status (404).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[1;31m
+Start test 89?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'If card-number doesn't have right format, endpoint must respond with HTTP Bad Request status (400).'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[1;31m
+Start test 90?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/stolencard'
+?[0m?[0;34mExpectations: 'Card must be removed from Black List'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ order by stolencard0_.id asc
+?[0m?[1;31m
+Start test 91?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be PROHIBITED due to - suspicious ip reason'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1000, ip='192.168.1.67', number='4000008449433403', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m420
+?[0m?[0;34mTransaction{id=8, amount=1501, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:06}
+?[0m?[0;34m360
+?[0m?[0;34mTransaction{id=7, amount=1500, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:05}
+?[0m?[0;34m300
+?[0m?[0;34mTransaction{id=6, amount=1499, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:04}
+?[0m?[0;34m240
+?[0m?[0;34mTransaction{id=5, amount=201, ip='192.168.1.1', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T16:03}
+?[0m?[0;34m180
+?[0m?[0;34mTransaction{id=4, amount=200, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:02}
+?[0m?[0;34m120
+?[0m?[0;34mTransaction{id=3, amount=199, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:01}
+?[0m?[0;34m60
+?[0m?[0;34mTransaction{id=1, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mTransaction{id=2, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mTransaction{id=10, amount=1, ip='192.168.1.1', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 92?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be PROHIBITED due to - stolen card reason'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1000, ip='192.168.1.1', number='4000003305160034', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 93?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be PROHIBITED due to - stolen card, suspicious ip reasons'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1000, ip='192.168.1.67', number='4000003305160034', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mTransaction{id=16, amount=1000, ip='192.168.1.1', number='4000003305160034', result='PROHIBITED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 94?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be PROHIBITED due to - amount, stolen card, suspicious ip reasons'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=2000, ip='192.168.1.67', number='4000003305160034', result='null', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34mTransaction{id=16, amount=1000, ip='192.168.1.1', number='4000003305160034', result='PROHIBITED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mTransaction{id=17, amount=1000, ip='192.168.1.67', number='4000003305160034', result='PROHIBITED', region=EAP, date=2022-01-22T16:00}
+?[0m?[0;34m0
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 95?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be ALLOWED'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.2', number='4000008449433403', result='null', region=EAP, date=2022-01-22T17:10}
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m-3780
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 96?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be ALLOWED'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.3', number='4000008449433403', result='null', region=EAP, date=2022-01-22T17:11}
+?[0m?[0;34mTransaction{id=19, amount=1, ip='192.168.1.2', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:10}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m-3840
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 97?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be ALLOWED'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.3', number='4000008449433403', result='null', region=EAP, date=2022-01-22T17:12}
+?[0m?[0;34mTransaction{id=20, amount=1, ip='192.168.1.3', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:11}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=19, amount=1, ip='192.168.1.2', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:10}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m-3900
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 98?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be MANUAL_PROCESSING due to - ip correlation rule'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.4', number='4000008449433403', result='null', region=EAP, date=2022-01-22T17:12}
+?[0m?[0;34mTransaction{id=21, amount=1, ip='192.168.1.3', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:12}
+?[0m?[0;34m0
+?[0m?[0;34mTransaction{id=20, amount=1, ip='192.168.1.3', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:11}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=19, amount=1, ip='192.168.1.2', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:10}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m-3900
+?[0m?[0;34mIp = 2
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
+?[0m?[1;31m
+Start test 99?[0m
+?[0;34mTest case
+?[0m?[0;34mTesting api: '/api/antifraud/transaction'
+?[0m?[0;34mExpectations: 'Transaction must be PROHIBITED due to - ip correlation rule'
+?[0m?[0;34m-----
+?[0m?[0;34mHibernate: select userdetail0_.id as id1_3_, userdetail0_.active as active2_3_, userdetail0_.name as name3_3_, userdetail0_.password as password4_3_, userdetail0_.role as role5_3_, userdetail0_.username as username6_3_ from user_details userdetail0_ where upper(userdetail0_.username)=upper(?)
+?[0m?[0;34mHibernate: select transactio0_.id as id1_2_, transactio0_.amount as amount2_2_, transactio0_.date as date3_2_, transactio0_.ip as ip4_2_, transactio0_.number as number5_2_, transactio0_.region as region6_2_, transactio0_.result as result7_2_ from transaction transactio0_ where transactio0_.number=? order by transactio0_.date DESC
+?[0m?[0;34mHibernate: select stolencard0_.id as id1_1_, stolencard0_.number as number2_1_ from stolen_card stolencard0_ where stolencard0_.number=?
+?[0m?[0;34mHibernate: select ipsuspicio0_.id as id1_0_, ipsuspicio0_.ip as ip2_0_ from ip_suspicious ipsuspicio0_ where ipsuspicio0_.ip=?
+?[0m?[0;34mTransaction{id=null, amount=1, ip='192.168.1.5', number='4000008449433403', result='null', region=EAP, date=2022-01-22T17:13}
+?[0m?[0;34mTransaction{id=21, amount=1, ip='192.168.1.3', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:12}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=22, amount=1, ip='192.168.1.4', number='4000008449433403', result='MANUAL_PROCESSING', region=EAP, date=2022-01-22T17:12}
+?[0m?[0;34m-60
+?[0m?[0;34mTransaction{id=20, amount=1, ip='192.168.1.3', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:11}
+?[0m?[0;34m-120
+?[0m?[0;34mTransaction{id=19, amount=1, ip='192.168.1.2', number='4000008449433403', result='ALLOWED', region=EAP, date=2022-01-22T17:10}
+?[0m?[0;34m-180
+?[0m?[0;34mTransaction{id=9, amount=2000, ip='192.168.1.1', number='4000008449433403', result='PROHIBITED', region=EAP, date=2022-01-22T16:07}
+?[0m?[0;34m-3960
+?[0m?[0;34mHibernate: call next value for hibernate_sequence
+?[0m?[0;34mHibernate: insert into transaction (amount, date, ip, number, region, result, id) values (?, ?, ?, ?, ?, ?, ?)
 ?[0m</pre>
 </span>
 </div>
@@ -867,7 +1346,7 @@ Start test 63?[0m
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at Mar 2, 2023, 5:52:35 PM</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at Mar 6, 2023, 5:49:35 PM</p>
 </div>
 </div>
 </body>
