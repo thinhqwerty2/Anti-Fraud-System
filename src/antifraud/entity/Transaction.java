@@ -1,16 +1,17 @@
 package antifraud.entity;
 
 
+import antifraud.responsebody.FeedbackSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -21,7 +22,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-    @JsonIgnore
+    @JsonProperty(value = "transactionId")
     private Long id;
 
     @NotNull
@@ -31,36 +32,56 @@ public class Transaction {
     @NotNull
     private String number;
 
+
     private String result;
 
     @NotNull
     private Region region;
+    @JsonIgnore
+    private long amountAllow = 200;
+    @JsonIgnore
+    private long amountManual = 1500;
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", amount=" + amount +
-                ", ip='" + ip + '\'' +
-                ", number='" + number + '\'' +
-                ", result='" + result + '\'' +
-                ", region=" + region +
-                ", date=" + date +
-                '}';
-    }
-
+    @JsonSerialize(using = FeedbackSerializer.class)
+    private Feedback feedback;
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime date;
 
+    public long getAmountManual() {
+        return amountManual;
+    }
+
+    public void setAmountManual(long amountManual) {
+        this.amountManual = amountManual;
+    }
+
+    public long getAmountAllow() {
+        return amountAllow;
+    }
+
+    public void setAmountAllow(long amountAllow) {
+        this.amountAllow = amountAllow;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
 
     public long getAmount() {
         return amount;
@@ -85,6 +106,7 @@ public class Transaction {
     public void setNumber(String number) {
         this.number = number;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -2,6 +2,7 @@ package antifraud.controller;
 
 import antifraud.entity.*;
 import antifraud.repository.TransactionRepository;
+import antifraud.requestbody.FeedBackRequest;
 import antifraud.service.CardNumberService;
 import antifraud.service.IpService;
 import antifraud.service.TransactionService;
@@ -25,8 +26,7 @@ public class ApiController {
 //    private final TransactionRepository transactionRepository;
 
 
-    public ApiController(UserDetailServiceIml userDetailServiceIml, IpService ipService, CardNumberService cardNumberService, TransactionService transactionService,
-                         TransactionRepository transactionRepository) {
+    public ApiController(UserDetailServiceIml userDetailServiceIml, IpService ipService, CardNumberService cardNumberService, TransactionService transactionService, TransactionRepository transactionRepository) {
         this.userDetailServiceIml = userDetailServiceIml;
         this.ipService = ipService;
         this.cardNumberService = cardNumberService;
@@ -41,30 +41,16 @@ public class ApiController {
             System.out.println("BadRequest");
             return ResponseEntity.status(400).build();
         }
-        List<Transaction> transactionBefore = transactionService.findLatestByNumberCard(transaction.getNumber());
-        String[] rs=transactionService.reasonReject(transaction,transactionBefore);
-        String result=rs[1];
-        String info=rs[0];
+//        List<Transaction> transactionBefore = transactionService.findLatestByNumberCard(transaction.getNumber());
+        List<Transaction> transactionBefore = transactionService.findOneHourBefore(transaction);
+
+        String[] rs = transactionService.reasonReject(transaction, transactionBefore);
+        String result = rs[1];
+        String info = rs[0];
         transaction.setResult(result);
         transactionService.saveTransaction(transaction);
-        return ResponseEntity.ok().body(Map.of("result",result,"info",info));
+        return ResponseEntity.ok().body(Map.of("result", result, "info", info));
 
-
-//        if (transactionService.reasonReject(transaction,transactionBefore).equals("")) {
-//            if (0 < transaction.getAmount() && transaction.getAmount() <= 200) {
-//                return ResponseEntity.ok().body(Map.of("result", "ALLOWED", "info", "none"));
-//            }
-//            if (200 < transaction.getAmount() && transaction.getAmount() <= 1500) {
-//                return ResponseEntity.ok().body(Map.of("result", "MANUAL_PROCESSING", "info", "amount"));
-//            }
-//        } else {
-//            return ResponseEntity.ok().body(Map.of("result", "PROHIBITED", "info", transactionService.reasonReject(transaction,transactionBefore)));
-//        }
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().build();
-//        }
-
-//        return null;
     }
 
     @PostMapping(value = "/auth/user", produces = "application/json")
@@ -212,6 +198,43 @@ public class ApiController {
     @GetMapping(value = "/antifraud/stolencard", produces = "application/json")
     public ResponseEntity<List<StolenCard>> getListStolenNumber() {
         return ResponseEntity.status(200).body(cardNumberService.findAll());
+    }
+
+    ////////////////////////Feedback////////////////
+    @PutMapping(value = "/antifraud/transaction")
+    public ResponseEntity<Transaction> feedBack(@RequestBody @Valid FeedBackRequest idAndFeedback) {
+        Transaction transaction = transactionService.findById(idAndFeedback.getTransactionId());
+        if (transaction != null) {
+            if (transaction.getFeedback() == null) {
+                if (!transaction.getResult().equals(idAndFeedback.getFeedback().toString())) {
+                    transaction.setFeedback(idAndFeedback.getFeedback());
+                    transactionService.updateLimit(transaction);
+                    transactionService.saveTransaction(transaction);
+                    return ResponseEntity.status(200).body(transaction);
+                } else {
+                    return ResponseEntity.status(422).build();
+                }
+            } else {
+                return ResponseEntity.status(409).build();
+            }
+        } else return ResponseEntity.status(404).build();
+    }
+
+    @GetMapping(value = "/antifraud/history")
+    public ResponseEntity<List<Transaction>> getListFeedBack() {
+        return ResponseEntity.status(200).body(transactionService.getListFeedBack());
+    }
+
+    @GetMapping(value = "/antifraud/history/{number}")
+    public ResponseEntity<List<Transaction>> getListFeedBackByNumber(@PathVariable String number) {
+        if (cardNumberService.isCorrectFormat(number)) {
+            if (transactionService.getListFeeBackByNumber(number).size() != 0) {
+                return ResponseEntity.status(200).body(transactionService.getListFeeBackByNumber(number));
+            } else
+
+                return ResponseEntity.status(404).build();
+
+        } else return ResponseEntity.status(400).build();
     }
 
 }

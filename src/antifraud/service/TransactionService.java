@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -24,16 +23,23 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
+    public Transaction findById(Long id){
+        return transactionRepository.findById(id).orElse(null);
+    }
     public List<Transaction> findLatestByNumberCard(String number) {
         return transactionRepository.findByNumberOrderByDateDesc(number);
+    }
+
+    public List<Transaction> findOneHourBefore(Transaction transaction){
+        return transactionRepository.findByDateBetween(transaction.getDate().minusHours(1),transaction.getDate());
     }
 
     public String[] reasonReject(Transaction transaction, List<Transaction> listTransactionBefore) {
         String rs = "ALLOWED";
         List<String> info = new ArrayList<>();
-        List<String> indexManual = new ArrayList<>();
+        List<String> indexManual = new ArrayList<>();//Use for delete manual while prohibited
         Set<String> setDistinctIP = new HashSet<>();
-        Set<String> setDistinctRegion = new HashSet<>();
+        Set<Region> setDistinctRegion = new HashSet<>();
         int countRegionDistinct = 0;
         int countIpDistinct = 0;
         String transactionIP = transaction.getIp();
@@ -43,7 +49,7 @@ public class TransactionService {
         if (rs.equals("MANUAL_PROCESSING")) {
             indexManual.add("amount");
         }
-        if (transaction.getAmount() > 200) {
+        if (transaction.getAmount() > transaction.getAmountAllow()) {
             info.add("amount");
         }
         if (cardNumberService.findByNumber(transaction.getNumber()) != null) {
@@ -58,53 +64,50 @@ public class TransactionService {
         if (listTransactionBefore.size() != 0) {
             for (Transaction item : listTransactionBefore) {
                 System.out.println(item);
-                System.out.println(Duration.between(item.getDate(),transactionDateTime).toSeconds());
-                if (Math.abs(Duration.between(item.getDate(),transactionDateTime).toSeconds())<= 3600) {
-                    if (!item.getRegion().equals(transactionRegion)) {
-                        if (setDistinctRegion.add(item.getIp())) {
-                            countRegionDistinct++;
-                        }
+                if (!item.getRegion().equals(transactionRegion)) {
+                    if (setDistinctRegion.add(item.getRegion())) {
+                        countRegionDistinct++;
                     }
-                    if (!item.getIp().equals(transactionIP)) {
-                        if (setDistinctIP.add(item.getIp())) {
-                            countIpDistinct++;
-                        }
-                    }
-                } else {
-                    break;
                 }
+                if (!item.getIp().equals(transactionIP)) {
+                    if (setDistinctIP.add(item.getIp())) {
+                        countIpDistinct++;
+                    }
+                }
+
                 if (countIpDistinct >= 2 && countRegionDistinct >= 2) {
                     break;
                 }
             }
+            System.out.println(setDistinctRegion);
 
-        if (countIpDistinct >= 2) {
-            info.add("ip-correlation");
-            if (countIpDistinct == 2) {
-                System.out.println("Ip = 2");
-                if (!rs.equals("PROHIBITED")) {
-                    rs = "MANUAL_PROCESSING";
+            if (countIpDistinct >= 2) {
+                info.add("ip-correlation");
+                if (countIpDistinct == 2) {
+                    System.out.println("Ip =" + countIpDistinct);
+                    if (!rs.equals("PROHIBITED")) {
+                        rs = "MANUAL_PROCESSING";
+                    }
+                    indexManual.add("ip-correlation");
+
                 } else {
                     rs = "PROHIBITED";
-
                 }
-                indexManual.add("ip-correlation");
-            }
 
-        }
-        if (countRegionDistinct >= 2) {
-            info.add("region-correlation");
-            if (countRegionDistinct == 2) {
-                System.out.println("Region = 2");
-                if (!rs.equals("PROHIBITED")) {
-                    rs = "MANUAL_PROCESSING";
+            }
+            if (countRegionDistinct >= 2) {
+                info.add("region-correlation");
+                if (countRegionDistinct == 2) {
+                    System.out.println("Region = 2");
+                    if (!rs.equals("PROHIBITED")) {
+                        rs = "MANUAL_PROCESSING";
+
+                    }
+                    indexManual.add("region-correlation");
                 } else {
                     rs = "PROHIBITED";
-
                 }
-                indexManual.add("region-correlation");
             }
-        }
         }
 
         if (info.size() == 0) {
@@ -117,13 +120,13 @@ public class TransactionService {
     }
 
     public String checkAmount(Transaction transaction) {
-        if (0 < transaction.getAmount() && transaction.getAmount() <= 200) {
+        if (0 < transaction.getAmount() && transaction.getAmount() <= transaction.getAmountAllow()) {
             return "ALLOWED";
         }
-        if (200 < transaction.getAmount() && transaction.getAmount() <= 1500) {
+        if (transaction.getAmountAllow() < transaction.getAmount() && transaction.getAmount() <= transaction.getAmountManual()) {
             return "MANUAL_PROCESSING";
         }
-        if (transaction.getAmount() > 1500) {
+        if (transaction.getAmount() > transaction.getAmountManual()) {
             return "PROHIBITED";
         }
         return null;
@@ -154,4 +157,20 @@ public class TransactionService {
     }
 
 
+    public List<Transaction> getListFeedBack() {
+       return transactionRepository.findAll();
+    }
+
+    public List<Transaction> getListFeeBackByNumber(String number) {
+        return transactionRepository.findByNumber(number);
+    }
+
+    public void updateLimit(Transaction transaction) {
+        switch (transaction.getResult()) {
+            case "ALLOWED" ->
+                    transaction.setAmountAllow((long) Math.ceil(transaction.getAmountAllow() * 0.8 + 0.2 * transaction.getAmount()));
+            case "MANUAL_PROCESSING" ->
+                    transaction.setAmountManual((long) Math.ceil(transaction.getAmountManual() * 0.8 + 0.2 * transaction.getAmount()));
+        }
+    }
 }
