@@ -24,6 +24,13 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
     @Override
     List<Transaction> findAll();
 
-    @Query("select t from Transaction t where t.date between :from and :to")
-    List<Transaction> findByDateBetween(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+//    @Query("select t from Transaction t where t.date between :from and :to")
+@Query("select t from Transaction t where t.date between :from and :to order by t.date DESC")
+List<Transaction> findByDateBetweenOrderByDateDesc(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+
+    
+//    @Query("select t from Transaction t where t.number =:number order by t.date limit 1")
+    Transaction findTop1ByNumberOrderByDateDesc(@Param("number") String number);
+
+
 }

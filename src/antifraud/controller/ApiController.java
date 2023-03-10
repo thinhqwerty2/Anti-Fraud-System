@@ -7,6 +7,7 @@ import antifraud.service.CardNumberService;
 import antifraud.service.IpService;
 import antifraud.service.TransactionService;
 import antifraud.service.UserDetailServiceIml;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api")
@@ -48,6 +50,7 @@ public class ApiController {
         String result = rs[1];
         String info = rs[0];
         transaction.setResult(result);
+        transaction.setFeedback("");
         transactionService.saveTransaction(transaction);
         return ResponseEntity.ok().body(Map.of("result", result, "info", info));
 
@@ -203,13 +206,24 @@ public class ApiController {
     ////////////////////////Feedback////////////////
     @PutMapping(value = "/antifraud/transaction")
     public ResponseEntity<Transaction> feedBack(@RequestBody @Valid FeedBackRequest idAndFeedback) {
+        System.out.println(idAndFeedback.getFeedback());
+
         Transaction transaction = transactionService.findById(idAndFeedback.getTransactionId());
         if (transaction != null) {
-            if (transaction.getFeedback() == null) {
-                if (!transaction.getResult().equals(idAndFeedback.getFeedback().toString())) {
+            if (Objects.equals(transaction.getFeedback(), "")) {
+                if (!transaction.getResult().equals(idAndFeedback.getFeedback())) {
                     transaction.setFeedback(idAndFeedback.getFeedback());
-                    transactionService.updateLimit(transaction);
+                    //Save feedback
                     transactionService.saveTransaction(transaction);
+                    //Save currentAmount to latest transaction
+                    List<Long> temp = transactionService.updateLimit(transaction, idAndFeedback.getFeedback());
+                    Transaction tempTransaction = transactionService.findLatestTransaction(transaction.getNumber());
+                    if (tempTransaction != null) {
+                        tempTransaction.setAmountAllow(temp.get(0));
+                        tempTransaction.setAmountManual(temp.get(1));
+                        transactionService.saveTransaction(tempTransaction);
+                    }
+                    System.out.println(transaction);
                     return ResponseEntity.status(200).body(transaction);
                 } else {
                     return ResponseEntity.status(422).build();
@@ -221,8 +235,9 @@ public class ApiController {
     }
 
     @GetMapping(value = "/antifraud/history")
-    public ResponseEntity<List<Transaction>> getListFeedBack() {
-        return ResponseEntity.status(200).body(transactionService.getListFeedBack());
+    public ResponseEntity<List<Transaction>> getListFeedBack() throws JsonProcessingException {
+        List<Transaction> transactions = transactionService.getListFeedBack();
+        return ResponseEntity.ok().body(transactions);
     }
 
     @GetMapping(value = "/antifraud/history/{number}")

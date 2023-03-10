@@ -3,12 +3,15 @@ package antifraud.service;
 import antifraud.entity.Region;
 import antifraud.entity.Transaction;
 import antifraud.repository.TransactionRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class TransactionService {
@@ -23,15 +26,16 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public Transaction findById(Long id){
+    public Transaction findById(Long id) {
         return transactionRepository.findById(id).orElse(null);
     }
+
     public List<Transaction> findLatestByNumberCard(String number) {
         return transactionRepository.findByNumberOrderByDateDesc(number);
     }
 
-    public List<Transaction> findOneHourBefore(Transaction transaction){
-        return transactionRepository.findByDateBetween(transaction.getDate().minusHours(1),transaction.getDate());
+    public List<Transaction> findOneHourBefore(Transaction transaction) {
+        return transactionRepository.findByDateBetweenOrderByDateDesc(transaction.getDate().minusHours(1), transaction.getDate());
     }
 
     public String[] reasonReject(Transaction transaction, List<Transaction> listTransactionBefore) {
@@ -44,7 +48,18 @@ public class TransactionService {
         int countIpDistinct = 0;
         String transactionIP = transaction.getIp();
         Region transactionRegion = transaction.getRegion();
-        LocalDateTime transactionDateTime = transaction.getDate();
+        System.out.println("all"+transactionRepository.findByNumber(transaction.getNumber()));
+        Transaction currentLimit = transactionRepository.findTop1ByNumberOrderByDateDesc(transaction.getNumber());
+        System.out.println("limit"+currentLimit);
+        System.out.println("list"+listTransactionBefore.toString());
+        if (currentLimit != null) {
+
+            transaction.setAmountAllow(currentLimit.getAmountAllow());
+        }
+        if (currentLimit != null) {
+
+            transaction.setAmountManual(currentLimit.getAmountManual());
+        }
         rs = checkAmount(transaction);
         if (rs.equals("MANUAL_PROCESSING")) {
             indexManual.add("amount");
@@ -60,10 +75,8 @@ public class TransactionService {
             info.add("ip");
             rs = "PROHIBITED";
         }
-        System.out.println(transaction);
         if (listTransactionBefore.size() != 0) {
             for (Transaction item : listTransactionBefore) {
-                System.out.println(item);
                 if (!item.getRegion().equals(transactionRegion)) {
                     if (setDistinctRegion.add(item.getRegion())) {
                         countRegionDistinct++;
@@ -84,7 +97,6 @@ public class TransactionService {
             if (countIpDistinct >= 2) {
                 info.add("ip-correlation");
                 if (countIpDistinct == 2) {
-                    System.out.println("Ip =" + countIpDistinct);
                     if (!rs.equals("PROHIBITED")) {
                         rs = "MANUAL_PROCESSING";
                     }
@@ -98,7 +110,6 @@ public class TransactionService {
             if (countRegionDistinct >= 2) {
                 info.add("region-correlation");
                 if (countRegionDistinct == 2) {
-                    System.out.println("Region = 2");
                     if (!rs.equals("PROHIBITED")) {
                         rs = "MANUAL_PROCESSING";
 
@@ -158,19 +169,42 @@ public class TransactionService {
 
 
     public List<Transaction> getListFeedBack() {
-       return transactionRepository.findAll();
+        return transactionRepository.findAll();
     }
+
 
     public List<Transaction> getListFeeBackByNumber(String number) {
         return transactionRepository.findByNumber(number);
     }
+    public Transaction findLatestTransaction(String number){
+        return transactionRepository.findByNumberOrderByDateDesc(number).get(0);
+    }
 
-    public void updateLimit(Transaction transaction) {
-        switch (transaction.getResult()) {
-            case "ALLOWED" ->
+    public List<Long> updateLimit(Transaction transaction, String feedback) {
+        //Here is transaction is validated and wait to feedback
+        switch (transaction.getResult() + " " + feedback) {
+            case "ALLOWED MANUAL_PROCESSING" ->
+                    transaction.setAmountAllow((long) Math.ceil(transaction.getAmountAllow() * 0.8 - 0.2 * transaction.getAmount()));
+            case "ALLOWED PROHIBITED" -> {
+                transaction.setAmountAllow((long) Math.ceil(transaction.getAmountAllow() * 0.8 - 0.2 * transaction.getAmount()));
+                transaction.setAmountManual((long) Math.ceil(transaction.getAmountManual() * 0.8 - 0.2 * transaction.getAmount()));
+            }
+            case "MANUAL_PROCESSING ALLOWED" ->
                     transaction.setAmountAllow((long) Math.ceil(transaction.getAmountAllow() * 0.8 + 0.2 * transaction.getAmount()));
-            case "MANUAL_PROCESSING" ->
+            case "MANUAL_PROCESSING PROHIBITED" ->
+                    transaction.setAmountManual((long) Math.ceil(transaction.getAmountManual() * 0.8 - 0.2 * transaction.getAmount()));
+            case "PROHIBITED ALLOWED" -> {
+                transaction.setAmountAllow((long) Math.ceil(transaction.getAmountAllow() * 0.8 + 0.2 * transaction.getAmount()));
+                transaction.setAmountManual((long) Math.ceil(transaction.getAmountManual() * 0.8 + 0.2 * transaction.getAmount()));
+            }
+            case "PROHIBITED MANUAL_PROCESSING" ->
                     transaction.setAmountManual((long) Math.ceil(transaction.getAmountManual() * 0.8 + 0.2 * transaction.getAmount()));
         }
+        return List.of(transaction.getAmountAllow(),transaction.getAmountManual()  );
+    }
+
+    @Bean
+    public ObjectMapper mapper() {
+        return new ObjectMapper();
     }
 }

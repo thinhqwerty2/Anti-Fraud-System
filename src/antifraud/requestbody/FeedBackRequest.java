@@ -2,9 +2,14 @@ package antifraud.requestbody;
 
 import antifraud.entity.Feedback;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class FeedBackRequest {
+    @NotNull
     Long transactionId;
-    Feedback feedback;
+    @Pattern(regexp = "^(ALLOWED|MANUAL_PROCESSING|PROHIBITED)?$|^$")
+    String feedback;
 
     public Long getTransactionId() {
         return transactionId;
@@ -14,11 +19,11 @@ public class FeedBackRequest {
         this.transactionId = transactionId;
     }
 
-    public Feedback getFeedback() {
+    public String getFeedback() {
         return feedback;
     }
 
-    public void setFeedback(Feedback feedback) {
+    public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
 }

@@ -1,16 +1,15 @@
 package antifraud.entity;
 
 
-import antifraud.responsebody.FeedbackSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -18,36 +17,47 @@ import java.util.Objects;
 @Table(name = "transaction")
 public class Transaction {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     @JsonProperty(value = "transactionId")
     private Long id;
-
     @NotNull
     private long amount;
     @NotNull
     private String ip;
     @NotNull
     private String number;
-
-
     private String result;
-
     @NotNull
     private Region region;
     @JsonIgnore
     private long amountAllow = 200;
     @JsonIgnore
     private long amountManual = 1500;
+    @Pattern(regexp = "^(ALLOWED|MANUAL_PROCESSING|PROHIBITED)?$|^$")
+    private String Feedback;
 
-    @JsonSerialize(using = FeedbackSerializer.class)
-    private Feedback feedback;
+//    @Enumerated(EnumType.STRING)
+//    @JsonSerialize(using = FeedbackSerializer.class)
+//    private Feedback feedback;
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime date;
+
+    @Override
+    public String toString() {
+        return "Transaction{" + "id=" + id + ", amount=" + amount + ", ip='" + ip + '\'' + ", number='" + number + '\'' + ", result='" + result + '\'' + ", region=" + region + ", amountAllow=" + amountAllow + ", amountManual=" + amountManual + ", Feedback='" + Feedback + '\'' + ", date=" + date + '}';
+    }
+
+    public String getFeedback() {
+        return Feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        Feedback = feedback;
+    }
 
     public long getAmountManual() {
         return amountManual;
@@ -65,14 +75,14 @@ public class Transaction {
         this.amountAllow = amountAllow;
     }
 
-    public Feedback getFeedback() {
-        return feedback;
-    }
-
-
-    public void setFeedback(Feedback feedback) {
-        this.feedback = feedback;
-    }
+//    public Feedback getFeedback() {
+//        return feedback;
+//    }
+//
+//
+//    public void setFeedback(Feedback feedback) {
+//        this.feedback = feedback;
+//    }
 
     public LocalDateTime getDate() {
         return date;
